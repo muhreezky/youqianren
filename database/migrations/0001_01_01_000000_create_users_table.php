@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('timezone')->default('UTC');
+            $table->string('language')->default('en');
+            $table->enum('role', ['admin', 'pro', 'free'])->default('free');
             $table->rememberToken();
             $table->timestamps();
         });
