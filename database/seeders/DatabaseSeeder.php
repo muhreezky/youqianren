@@ -15,11 +15,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call([
+            CurrencySeeder::class,
+            CategorySeeder::class,
+        ]);
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Admin',
+            'email' => 'admin@youqianren.com',
+            'password' => bcrypt('password'),
+            'role' => 'admin',
+            'timezone' => 'Asia/Jakarta',
+            'language' => 'en',
+        ]);
+
+        User::factory()->create([
+            'name' => 'Demo User',
+            'email' => 'demo@youqianren.com',
+            'password' => bcrypt('password'),
+            'role' => 'free',
+            'timezone' => 'Asia/Jakarta',
+            'language' => 'en',
         ]);
     }
 }
